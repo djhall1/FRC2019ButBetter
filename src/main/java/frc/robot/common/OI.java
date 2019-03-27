@@ -1,16 +1,17 @@
 package frc.robot.common;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI{
-    Joystick driverController;
+    XboxController driverController;
   
     private static final int driveControllerPort = 0;
     
     public OI(){
-        driverController = new Joystick(driveControllerPort);
+        driverController = new XboxController(driveControllerPort);
     }
 
     public double getRightYAxis(){
@@ -19,9 +20,12 @@ public class OI{
     public double getLeftYAxis(){
         return driverController.getY(Hand.kLeft);
     }
-    //public double rTrigger(){
-       // return driverController.get(Hand.kRight);
-    //}
+    public double getRTrigger(){
+        return driverController.getTriggerAxis(Hand.kRight);
+    }
+    public double getLTrigger(){
+        return driverController.getTriggerAxis(Hand.kLeft);
+    }
 
     public void updateDashboard(){
         SmartDashboard.putNumber("Right Input", this.getRightYAxis());
