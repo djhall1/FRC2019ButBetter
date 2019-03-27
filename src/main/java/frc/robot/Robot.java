@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.common.OI;
+import frc.robot.common.components.Arm;
 import frc.robot.common.components.Drive;
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+  public static Arm arm = new Arm();
   public static Drive drive = new Drive();
   public static OI oi = new OI();
 
@@ -107,6 +109,7 @@ public class Robot extends IterativeRobot {
   }
 
   public void updateDashboard(){
+    arm.updateDashboard();
     drive.updateDashboard();
     oi.updateDashboard();
   }
