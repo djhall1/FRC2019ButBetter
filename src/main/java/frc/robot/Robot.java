@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.common.OI;
 import frc.robot.common.components.Arm;
 import frc.robot.common.components.Drive;
+import frc.robot.common.components.Lift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   public static Arm arm = new Arm();
+  public static Lift lift = new Lift();
   public static Drive drive = new Drive();
   public static OI oi = new OI();
 

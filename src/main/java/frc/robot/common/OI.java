@@ -28,8 +28,8 @@ public class OI{
     }
 
     public void updateDashboard(){
-        SmartDashboard.putNumber("Right Input", this.getRightYAxis());
-        SmartDashboard.putNumber("Left Input", this.getLeftYAxis());
+        SmartDashboard.putNumber("RightInput", this.getRightYAxis());
+        SmartDashboard.putNumber("LeftInput", this.getLeftYAxis());
     }
 }
 

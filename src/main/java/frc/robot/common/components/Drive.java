@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 
 
@@ -21,14 +22,18 @@ public class Drive extends Subsystem{
 
     public Drive(){
         this.rightBackMotor = new VictorSP(RIGHT_BACK_MOTOR);
+        this.rightBackMotor.setInverted(true);
         this.rightFrontMotor = new VictorSP(RIGHT_FRONT_MOTOR);
         this.leftBackMotor = new VictorSP(LEFT_BACK_MOTOR);
+        this.leftFrontMotor.setInverted(true);
         this.leftFrontMotor = new VictorSP(LEFT_FRONT_MOTOR);
 
         this.rightDrive = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
         this.leftDrive = new SpeedControllerGroup( leftFrontMotor, leftBackMotor);
 
         this.diffDrive = new DifferentialDrive(this.leftDrive, this.rightDrive);
+        this.diffDrive.tankDrive(0,0); // Stop the robot on init.
+        
     }
     
     public void setTankDrive(double leftInput, double rightInput){
@@ -44,7 +49,11 @@ public class Drive extends Subsystem{
     }
 
     public void updateDashboard(){
-    
+        // Motor Speeds to Smart Dashboard
+        SmartDashboard.putNumber("RightBackSpeed",this.rightBackMotor.getSpeed());
+        SmartDashboard.putNumber("RightFrontSpeed", this.rightFrontMotor.getSpeed());
+        SmartDashboard.putNumber("LeftBackSpeed", this.leftBackMotor.getSpeed());
+        SmartDashboard.putNumber("LeftFrontSpeed", this.leftFrontMotor.getSpeed());
     }
 }
 
